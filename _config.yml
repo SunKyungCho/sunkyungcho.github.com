@@ -3,7 +3,7 @@
 # # # # # # # # # # # # #
 
 # Basic
-name:               "개발자"
+name:               "보조기억장치"
 
 author:
   facebook:         your-id
@@ -20,7 +20,7 @@ copyright:
 
 # Google-analytics
 google-analytics:
-  id:               ""
+  id:               "UA-112440594-1"
 
 # Disqus
 disqus:
