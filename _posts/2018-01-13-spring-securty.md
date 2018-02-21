@@ -16,7 +16,7 @@ Springboot security를 활용해 쉽고 간단하게 로그인(Login) 기능과 
 
 스프링 시큐리티를 사용하면 간단한 몇가지 설정만으로 로그인 기능을 구현 할 수 있다. 이곳에서는 스프링 시큐리티의 기본구성을 어떻게 하면 되는지 간단한 구현과 사용방법에 대해 기록 하겠다.
 
-##1. 로그인 기능
+## 1. 로그인 기능
 
 ### 기본설정
 Account라는 계정정보를 관리하는 테이블이 있고 JPA를 통해 관리되는 프로세스를 가지고 있다고 가정하고 일부 소스는 생략했다. 설정에 관한 것 위주로 설명한다.
@@ -30,7 +30,7 @@ dependencies{
 ```
 아래의 구현을 위해서 jpa와 security를 선언한다.
 
-####Account.java
+#### Account.java
 ```java
 @Getter //lombok
 @Setter //lombok
@@ -326,5 +326,5 @@ CREATE TABLE `persistent_logins` (
 
 tokenRepository를 구현하지 않아도 `persistent_logins` 테이블에 token정보가 저장된다.
 
-##마치며
+## 마치며
 로그인을 구현하는데 있어서 쉽게 구현할 수 있었다. 로그인을 구현한다는것은 여간 까다롭고 귀찮은 일이 아니다. spring-security가 알아서 편리하게 해주니 좋다. 한번 구현해놓으면 잘 안보게 되어서 다시 하려고 금세 까먹는다. 고로 저장.
