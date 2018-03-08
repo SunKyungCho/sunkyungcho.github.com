@@ -19,6 +19,9 @@ Create new app을 클릭해 생성한다.
 MyApp명과 언어, 설명을 작성한다. 사용자의 의도를 해석할 명확한 목표를 가지고 있도록 설계하는것이 좋다.
 
 #### Intent 생성
+
+행위에 대한것
+
 먼저 Intent를 생성해 본다. intent 의도라는건 사용자가 수행하고자 하는 목적, 목표를 말한다. 챗봇에서 사용자가 입력하는 말의 의미을 파악한다는 말이다.
 ![image](/Images/botFramework&Luis/intents-list.png)
 
@@ -35,14 +38,29 @@ MyApp명과 언어, 설명을 작성한다. 사용자의 의도를 해석할 명
 Intent를 등록해준다. 간단한 예제를 위해 인사말을 등록해 줬다. 등록해둔 안녕, 안녕하세요, hi등의 말들을 훈련해 이와 비슷한 말들이나 같은 말이 들어오면 이 말의 뜻은 인사하는거구나를 파악하게 될것이다.
 ![image](/Images/botFramework&Luis/intent_greeting.png)
 
+#### Entity 생성
+
+왜쓰나?
+안써도 잘 돌아간다?
+
+ex)
+인터넷이 고장났어
+전화 안돼
+
+무조건 필 수 적인건 아니다.
+
 
 
 ## Bot Framework
 
+변경이되서 봇프레임워크 생성시 기본 템플릿이 제공된다.
 비주얼 스튜디오 2017에서 테스트 베이스를 띄워야 하는데 잘안됨
 패키지를 설치해줘야 하는것 같음.
 
 * NuGet Package 근데 잘 안됨
+
+ngrok설명도 써두자
+로컬에 있는 자원을 외부에서 접속하기 위한~
 
 * [Bot Framework Emulator 다운로드](https://github.com/Microsoft/BotFramework-Emulator/releases)
 
@@ -57,6 +75,40 @@ Intent를 등록해준다. 간단한 예제를 위해 인사말을 등록해 줬
 An alternative method to build the bot is to select the bot name in the top blue bar, and select Open Kudu Console. The console opens to D:\home.
 Change the directory to *D:\home\site\wwwroot* by typing: *cd site\wwwroot*
 Run the build script by typing: *build.cmd*
+
+
+
+------
+# 챗봇 세미나 관련 정보
+
+Azure potal접속시
+먼저 리소스 그룹을 먼저 생성한다.
+ex) bot-test-wus-rg
+ey) bot-test-wus-wab
+ez)
+
+미국 서부로 하는게 좋다.
+같은 데이터 센터내에 있는게 좋다. 데이터 지연이 없다.
+
+
+정확도를 보장하기 위해서는
+한 intent당 최소 200문장 정도는 넣어줘야 한다.
+한글은 좀 더 많이 넣어줘야 할것이다.
+
+
+
+# Slack 연동하는거 해보자
+
+
+# 원칙
+사람들은 ai가 똑똑한줄아니까 잘 대응해줘야해
+그럴려면 디자인을 잘해야되는데
+디자인을 잘한다는건 생각한 시나리오만을 질의하진 않는다.
+사실 시나리오를 만드는게 가장 좋다.
+
+
+
+
 
 ### 날씨 API
 날씨에 대한 정보는 [SK planet DEVELOPERS](https://developers.skplanetx.com/apidoc/kor/weather/living/#doc1400)의 API를 활용하여 날씨 정보를 얻어 온다.
