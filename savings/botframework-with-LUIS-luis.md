@@ -32,13 +32,28 @@ MyApp명과 언어, 설명을 작성한다. 사용자의 의도를 해석할 명
 ![image](/Images/botFramework&Luis/languae_support.png)
 
 생각보다 많은 언어를 지원한다.
-언어별로 각각의 미리 준비된 domain이나 entity가 제공된다. 하지만 아쉽게도 한글은 미리준비된 entity들이 없다. 모두 설정해줘야한다. [MS Translator API](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/translator-info-overview)를 사용하라고 한다.
+언어별로 각각의 미리 준비된 domain이나 entity가 제공된다. 하지만 아쉽게도 한글은 미리준비된 entity들이 없다. 모두 설정해줘야한다. MS에서는 [MS Translator API](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/translator-info-overview)를 사용하는것도 방법이라고 한다. 하지만 Translator를 사용해 보진 않았다.
 
 #### Intent 등록
-Intent를 등록해준다. 간단한 예제를 위해 인사말을 등록해 줬다. 등록해둔 안녕, 안녕하세요, hi등의 말들을 훈련해 이와 비슷한 말들이나 같은 말이 들어오면 이 말의 뜻은 인사하는거구나를 파악하게 될것이다.
+Intent를 등록해준다. 간단한 예제를 위해 인사말을 등록해 줬다. 등록해둔 안녕, 안녕하세요, hi등의 말들(utterance)을 훈련해 이와 비슷한 말들이나 같은 말이 들어오면 이 말의 뜻은 인사하는거구나를 파악하게 될것이다.
 ![image](/Images/botFramework&Luis/intent_greeting.png)
 
 #### Entity 생성
+Entity는 사용자의 입력에서 필요한 파라미터 값이나 또는 데이터등이 필요할때 사용된다. 예를 들어 '뉴욕가는 비행기 티켓을 예약해줘'라는 사용자 입력(Utterance)가 있다고 하면 우리는 '뉴욕' 이라는 장소를 뜻하는 Entity를 추출할 수 있다. 모든 사용자 입력에 Entity가 들어가지는 않을 수 있다.
+
+##### Entity 종류
+Entity에는 5가지의 종류가 있다.
+
+###### 1. Simple
+
+###### 2. Hierarchical
+
+###### 3. Composite
+
+###### 4. List
+
+###### 5. Regex
+정규표현식을 엔티티를 잡아낸다. 너무 복잡한 수식이들어간 정규표현식은 사용할 수 없다.
 
 왜쓰나?
 안써도 잘 돌아간다?
@@ -48,6 +63,8 @@ ex)
 전화 안돼
 
 무조건 필 수 적인건 아니다.
+
+##### Entity 종류
 
 
 
