@@ -8,6 +8,8 @@ gems:
 exclude:
   - "/vendor/"
 
+plugins:
+
 # Site settings
 title: 보조기억장치
 subtitle: "잃어버리고 싶지 않은 내용들을 이곳 보조기억장치에 백업한다.."
@@ -78,7 +80,7 @@ social:
   - name: Twitter
     icon: twitter
     username:
-    url: 
+    url:
     desc: Follow me on Twitter
     share: false
 
