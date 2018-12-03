@@ -1,3 +1,8 @@
-# 보조 기억 저장소
 
-아무거나 기억할만한 것들을 기록한다. 저장한다.
+# 보조기억장치
+개발관련 기록을 위한 블로그입니다. 
+
+
+
+테마는 [Centraium](# Centrarium [![Circle CI](https://circleci.com/gh/bencentra/centrarium/tree/master.svg?style=svg)](https://circleci.com/gh/bencentra/centrarium/tree/master)
+)에서 추가했습니다.

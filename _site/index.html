@@ -1,238 +1,303 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+
+  <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>개발자</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+  <title>보조기억장치</title>
+  <meta name="description" content="개발관련 보조기억장치
+">
+  
+  <meta name="author" content="Sunkyoung Cho">
+  <meta name="copyright" content="&copy; Sunkyoung Cho 2018">
+  
 
-  <!-- Font -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/sunburst.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/backup_memory/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/backup_memory/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/backup_memory/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/backup_memory/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/backup_memory/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/backup_memory/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/backup_memory/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/backup_memory/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/backup_memory/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/backup_memory/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/backup_memory/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/backup_memory/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/backup_memory/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/backup_memory/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/backup_memory/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/backup_memory/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/backup_memory/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="개발관련 보조기억장치
+" />
+  <meta property="og:url" content="http://sunkyungch.github.io" />
+  <meta property="og:site_name" content="보조기억장치" />
+  <meta property="og:title" content="보조기억장치" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://sunkyungch.github.io/backup_memory/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="보조기억장치">
+  <meta name="twitter:description" content="개발관련 보조기억장치
+">
+  <meta name="twitter:image" content="http://sunkyungch.github.io/backup_memory/assets/logo.png">
+  <meta name="twitter:url" content="http://sunkyungch.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/backup_memory/css/main.css">
+  <link rel="canonical" href="http://sunkyungch.github.io/backup_memory/">
+  <link rel="alternate" type="application/rss+xml" title="보조기억장치" href="http://sunkyungch.github.io/backup_memory/feed.xml" />
+</head>
 
 
-  <link rel="alternate" type="application/rss+xml" title="RSS Feed for 개발자" href="/feed.xml" />
-  <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>개발자</title>
-<meta property="og:title" content="개발자" />
-<link rel="canonical" href="http://localhost:4000/" />
-<meta property="og:url" content="http://localhost:4000/" />
-<meta property="og:site_name" content="개발자" />
-<script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "WebSite",
-"name": "개발자",
-"headline": "개발자",
-"url": "http://localhost:4000/"}</script>
-<!-- End Jekyll SEO tag -->
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/backup_memory/" class="logo">
+      
+      <img src="/backup_memory/assets/logo.png" alt="보조기억장치">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/backup_memory/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/backup_memory/posts/">Posts</a>
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
 
 
+    <div class="page-content">
+        <div class="home">
 
-  <!-- Google Analytics -->
+<div class="site-header-container has-cover" style="background-image: url(/backup_memory/assets/header_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">보조기억장치</h1>
+      <p class="subtitle">잃어버리고 싶지 않은 내용들을 이곳 보조기억장치에 백업한다..</p>
+    </header>
+  </div>
+</div>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/backup_memory/java/2018/04/18/spring-security.html">스프링부트-시큐리티(Springboot Security) 적용하기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>Springboot security를 활용해 로그인(Login)기능과 리멤버미(remember-me) 기능을 기록한다. Spring boot Security 적용하기 스프링 시큐리티를 사용하면 간단한 몇가지 설정만으로 로그인 기능을 구현 할 수 있다. 스프링 시큐리티의 기본구성을 어떻게 하면 되는지 간단한 구현과 사용방법에 대해 기록한다. 1. 로그인 기능 Account라는 계정정보를 관리하는 테이블이 있고 JPA를 통해 관리되는 프로세스를 가지고 있다고 가정하고 일부...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">April 18, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/backup_memory/category/Java">Java</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
 
-ga('create', '', 'auto');
-ga('send', 'pageview');
+<nav class="pagination" role="navigation">
+	<p>
+    
+		<span class="fa-stack fa-lg">
+      <i class="fa fa-square fa-stack-2x"></i>
+      <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+    </span>
+		
+		<span class="page-number">Page 1 of 1</span>
+		
+		<span class="fa-stack fa-lg">
+      <i class="fa fa-square fa-stack-2x"></i>
+      <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+    </span>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">보조기억장치</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/backup_memory/about/">About</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/backup_memory/posts/">Posts</a>
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:sunkyungch@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">sunkyungch@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/SunKyungCho" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">sunkyungcho</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://www.linkedin.com/in/sun-kyung-cho-133818151/" title="Connect with me on LinkedIn">
+              <i class="fa fa-linkedin"></i>
+              <span class="username">Sunkyung Cho</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/backup_memory/feed.xml">via RSS</a></strong></p>
+      <p class="text">개발관련 보조기억장치
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
 
 </script>
 
 
 
-</head>
-
-<body>
-  <div class="content-container">
-    <header class="header">
-  <h1 class="header-title">
-    <a href="http://localhost:4000">개발자<span>&#39;s blog</span></a>
-  </h1>
-  <nav class="header-nav">
-    
-    
-    <a href="/about">About</a>
-    
-    
-    
-    <a href="/archive">Archive</a>
-    
-    
-    
-    <a href="/tags">Tags</a>
-    
-    
-    
-    <a href="https://github.com/SunKyungCho">Github</a>
-    
-    
-  </nav>
-</header>
-
-<div class="list">
-
-<!-- This loops through the paginated posts -->
-
-  <div class="list-post">
-    
-    <a href="/2017-01-19/style-test-ko/">
-      
-      <div class="list-post-date">
-        <time>19 Jan 2017</time>
-      </div>
-      <div class="list-post-title">
-        한글 문서 스타일 샘플
-      </div>
-      
-      <div class="list-post-desc">
-        한글로 된 글의 샘플입니다.
-      </div>
-      
-    </a>
 
 
-  </div>
 
-  <div class="list-post">
-    
-    <a href="/2017-01-19/readability-post-ko/">
-      
-      <div class="list-post-date">
-        <time>19 Jan 2017</time>
-      </div>
-      <div class="list-post-title">
-        한글 문서 가독성 테스트
-      </div>
-      
-      <div class="list-post-desc">
-        한글로 된 문서의 가독성을 테스트합니다.
-      </div>
-      
-    </a>
+  </body>
 
-
-  </div>
-
-  <div class="list-post">
-    
-    <a href="/2013-08-16/code-highlighting-post/">
-      
-      <div class="list-post-date">
-        <time>16 Aug 2013</time>
-      </div>
-      <div class="list-post-title">
-        Syntax Highlighting Post
-      </div>
-      
-      <div class="list-post-desc">
-        Demo post displaying the various ways of highlighting code in Markdown.
-      </div>
-      
-    </a>
-
-
-  </div>
-
-  <div class="list-post">
-    
-    <a href="http://aweekj.github.io/Kiko-plus">
-      
-      <div class="list-post-date">
-        <time>12 Aug 2013</time>
-      </div>
-      <div class="list-post-title">
-        Sample Link Post
-      </div>
-      
-      <div class="list-post-desc">
-        This theme supports link posts, made famous by John Gruber. To use, just add `link: http://url-you-want-linked` to the post's YAML front matter and you're done.
-      </div>
-      
-    </a>
-
-
-  </div>
-
-  <div class="list-post">
-    
-    <a href="/2012-05-22/readability-post/">
-      
-      <div class="list-post-date">
-        <time>22 May 2012</time>
-      </div>
-      <div class="list-post-title">
-        Testing Readability with a Bunch of Text
-      </div>
-      
-      <div class="list-post-desc">
-        A ton of text to test readability.
-      </div>
-      
-    </a>
-
-
-  </div>
-
-  <!-- Pagination links -->
-  <div class="list-pagination">
-    <span class="list-pagination-previous">
-      
-
-      
-    </span>
-
-    <span class="list-pagination-next">
-      
-
-      
-    </span>
-
-  </div>
-
-</div>
-
-
-    <!-- Documents about icons are here: http://fontawesome.io/icons/ -->
-<div class="footer">
-  <hr />
-  <div class="footer-link">
-    
-    <a href="https://www.facebook.com/your-id"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-    
-
-    
-    <a href="https://twitter.com/your-id"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-    
-
-    
-    <a href="https://github.com/your-id"><i class="fa fa-github" aria-hidden="true"></i></a>
-    
-
-    
-    <a href="https://www.linkedin.com/in/your-id"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-    
-
-    
-    <a href="https://medium.com/@your-id"><i class="fa fa-medium" aria-hidden="true"></i></a>
-    
-
-    
-    <a href="https://your-id.tumblr.com"><i class="fa fa-tumblr" aria-hidden="true"></i></a>
-    
-
-    
-    <a href="mailto:sunkyungch@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-    
-
-  </div>
-  © 2017 SunKyung. All rights reserved.
-</div>
-
-  </div>
-</body>
 </html>

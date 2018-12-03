@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>스프링부트-시큐리티(Springboot Security) 적용하기</title>
+  <meta name="description" content="Springboot security를 활용해 로그인(Login)기능과 리멤버미(remember-me) 기능을 기록한다.">
+  
+  <meta name="author" content="Sunkyoung Cho">
+  <meta name="copyright" content="&copy; Sunkyoung Cho 2018">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/sunburst.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/backup_memory/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/backup_memory/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/backup_memory/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/backup_memory/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/backup_memory/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/backup_memory/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/backup_memory/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/backup_memory/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/backup_memory/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/backup_memory/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/backup_memory/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/backup_memory/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/backup_memory/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/backup_memory/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/backup_memory/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/backup_memory/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/backup_memory/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Springboot security를 활용해 로그인(Login)기능과 리멤버미(remember-me) 기능을 기록한다." />
+  <meta property="og:url" content="http://sunkyungch.github.io" />
+  <meta property="og:site_name" content="보조기억장치" />
+  <meta property="og:title" content="스프링부트-시큐리티(Springboot Security) 적용하기" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://sunkyungch.github.io/backup_memory/assets/dev.jpeg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="스프링부트-시큐리티(Springboot Security) 적용하기">
+  <meta name="twitter:description" content="Springboot security를 활용해 로그인(Login)기능과 리멤버미(remember-me) 기능을 기록한다.">
+  <meta name="twitter:image" content="http://sunkyungch.github.io/backup_memory/assets/dev.jpeg">
+  <meta name="twitter:url" content="http://sunkyungch.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/backup_memory/css/main.css">
+  <link rel="canonical" href="http://sunkyungch.github.io/backup_memory/java/2018/04/18/spring-security.html">
+  <link rel="alternate" type="application/rss+xml" title="보조기억장치" href="http://sunkyungch.github.io/backup_memory/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/backup_memory/" class="logo">
+      
+      <img src="/backup_memory/assets/logo.png" alt="보조기억장치">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/backup_memory/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/backup_memory/posts/">Posts</a>
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/backup_memory/assets/dev.jpeg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">스프링부트-시큐리티(Springboot Security) 적용하기</h1>
+      <p class="info">by <strong>Sunkyung</strong></p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">April 18, 2018</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/backup_memory/category/Java">Java</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>Springboot security를 활용해 로그인(Login)기능과 리멤버미(remember-me) 기능을 기록한다.</p>
+
+<hr />
+
+<h1 id="spring-boot-security-">Spring boot Security 적용하기</h1>
+<p>스프링 시큐리티를 사용하면 간단한 몇가지 설정만으로 로그인 기능을 구현 할 수 있다. 스프링 시큐리티의 기본구성을 어떻게 하면 되는지 간단한 구현과 사용방법에 대해 기록한다.</p>
+
+<h2 id="section">1. 로그인 기능</h2>
+<p>Account라는 계정정보를 관리하는 테이블이 있고 JPA를 통해 관리되는 프로세스를 가지고 있다고 가정하고 일부 소스는 생략했다. 설정에 관한 것 위주로 설명한다.</p>
+
+<h4 id="gradle-dependencies-">Gradle dependencies 추가</h4>
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">dependencies</span><span class="p">{</span>
+  <span class="n">compile</span><span class="p">(</span><span class="s1">'org.springframework.boot:spring-boot-starter-data-jpa'</span><span class="p">)</span>
+	<span class="n">compile</span><span class="p">(</span><span class="s1">'org.springframework.boot:spring-boot-starter-security'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>구현을 위해서 SpringData-JPA와 Security를 선언한다. 버전은 따로 명시하지 않아도 스프링부트에서 알맞게 잡아준다.</p>
+
+<h4 id="accountjava">Account.Java</h4>
+<pre><code class="language-Java">@Getter //lombok
+@Setter //lombok
+@Entity
+public class Account {
+
+    @Id
+    @Column(name = "account_id")
+    private String accountId;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "role")
+    private String role;
+}
+</code></pre>
+<p>간단한 계정정보를 관리한다. 계정ID, 비밀번호, 권한정보를 가지고 있다.</p>
+
+<h4 id="accountrepositoryjava">AccountRepository.Java</h4>
+<pre><code class="language-Java">@Repository
+public interface AccountRepository extends JpaRepository&lt;Account, String&gt;{
+    Account findByAccountId(String accountID);
+}
+</code></pre>
+<p>DB에서 계정정보를 가지고 올 Repository 작성.</p>
+
+<h4 id="userdetailsimpljava">UserDetailsImpl.Java</h4>
+<pre><code class="language-Java">public class UserDetailsImpl extends User {
+
+    public UserDetailsImpl(Account account) {
+        super(account.getAccountId(), account.getPassword(), getAuthorities(account));
+    }
+
+    private static Collection&lt;GrantedAuthority&gt; getAuthorities(Account account) {
+        List&lt;GrantedAuthority&gt; authorities = new ArrayList&lt;&gt;();
+        authorities.add(new SimpleGrantedAuthority(account.getRole()));
+       return authorities;
+    }
+}
+</code></pre>
+<h4 id="userdetailserviceimpljava">UserDetailServiceImpl.Java</h4>
+<p>UserDetailService는 아래와 같이 loadUserByUsername에 대한 메소드만 구현해주면 된다.</p>
+<pre><code class="language-Java">@Service
+public class UserDetailsServiceImpl implements UserDetailsService {
+
+    @Autowired
+    AccountRepository accountRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        Account account = accountRepository.findByAccountId(username);
+        if (account == null){
+            throw new UsernameNotFoundException(username);
+        }
+        return new UserDetailsImpl(account);
+    }
+}
+</code></pre>
+<p>위 두 클래스의 목적은 간단하다. 사용자가 입력한 username으로 DB에서 계정정보를 조회하고 만약 값이 없다면 UsernameNotFoundException을 날리게 될것이고 존재한다면 사용자 계정정보(ID, password, 권한정보)갖게 된다. 이정보를 가지고 내부적으로 login기능을 구현하는데 사용할 것이다.</p>
+
+<h3 id="securityconfig-">SecurityConfig 작성</h3>
+<p>Java configuration으로 설정을 모두 처리한다.</p>
+<pre><code class="language-Java">@Configuration
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    UserDetailsService userDetailsService;
+
+    //------(1)
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http.csrf().disable()
+            .authorizeRequests()
+                .antMatchers("/", "/home", "/join","/join-process").permitAll()
+                .antMatchers("/user/**").hasAnyRole("USER")
+                .anyRequest().authenticated()
+            .and()
+            .formLogin()
+                .loginPage("/login")
+                .permitAll()
+            .and()
+            .logout()
+                .permitAll();
+    }
+
+    //-----(2)
+    @Autowired
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+</code></pre>
+<p>(1) antMatchers를 통해 URL별 권한을 설정해 줄 수 있다. <code class="highlighter-rouge">permitAll()</code>은 권한 없이 누구나 다 접근 가능한 결로가 될 것이다. /user/** 경로는 USER권한을 갖은 사용자만 접근이 가능할 것이다. 이 페이지에 접근하지 위해서는 login을 해야한다. 권한이 필요하기 때문에 자동적으로 formLogin에 설정되어 있는 /login페이지로 이동하게 된다.
+추가로 <code class="highlighter-rouge">.hasAnyRole("USER")</code>은 내부적으로 앞에 <strong>ROLE_</strong> 가 붙게 된다. 즉, <code class="highlighter-rouge">.hasAuthority("ROLE_USER")</code>와 동일하게 사용할 수 있다.</p>
+
+<p>(2) 앞서 생성해 놓은 <code class="highlighter-rouge">userDetailsService</code> 와 <code class="highlighter-rouge">passwordEncoder</code> 를 등록해 패스워스를 암호화 시킨다.
+이렇게 설정을 해 놓으면 security의 간단한 로그인 기능 설정은 끝이다. 추가로 세세하게 설정할 수도 있다. login시 계정정보를 Spring security가 알아서 비교하여 로그인 실패와 성공을 알려준다.</p>
+
+<p>추가로 login form의 파라미터 정보를 지정해줄수 있는데 디폴트설정으로는 ‘username’과 ‘password’로 파라미터를 받는다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    .formLogin()
+         .loginPage("/login")
+         .loginProcessingUrl("/authentication")
+         .usernameParameter("userId")
+         .passwordParameter("password")
+</code></pre>
+</div>
+
+<p>/authentication 으로 userId와 password를 던져서 로그인 처리를 한다.</p>
+
+<h2 id="remember-me">2. Remember-me</h2>
+
+<p>remember-me 기능은 로그인정보를 기억하여 사용자가 재접속시 별도의 별그인과정을 거치지 않고 로그인 인증을 해주는 기능. 쿠키 방식과 영속성(persistence)방식이 있다. 여기에서는 좀 더 활용성 있는 구현을 위해 영속성 방식으로 구현 했다.</p>
+
+<p>위에 구현했던 로그인 기능에 remember-me를 추가한다.</p>
+<pre><code class="language-Java">
+@Configuration
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+
+
+    @Autowired
+    UserDetailsService userDetailsService;
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http.csrf().disable()
+          .authorizeRequests()
+              .antMatchers("/", "/home", "/join","/join-process").permitAll()
+              .antMatchers("/user/**").hasAnyRole("USER")
+              .anyRequest().authenticated()
+          .and()
+          .formLogin()
+              .loginPage("/login")
+              .permitAll()
+          .and()
+          .logout()
+              .permitAll()
+          .and()
+          .rememberMe()
+              .key("security-example")
+              .rememberMeServices(persistentTokenBasedRememberMeServices())
+              .tokenValiditySeconds(8640000);
+    }
+
+    // create two users, admin and user
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
+
+    @Bean
+    public RememberMeServices persistentTokenBasedRememberMeServices() {
+
+        PersistentTokenBasedRememberMeServices persistentTokenBasedRememberMeServices =
+                new PersistentTokenBasedRememberMeServices("security-example", userDetailsService, persistentTokenRepository());
+        persistentTokenBasedRememberMeServices.setParameter("remember_me");
+        return persistentTokenBasedRememberMeServices;
+    }
+    @Bean
+    public PersistentTokenRepositoryImpl persistentTokenRepository() {
+        PersistentTokenRepositoryImpl persistentTokenRepository = new PersistentTokenRepositoryImpl();
+        return persistentTokenRepository;
+    }
+
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+</code></pre>
+
+<ul>
+  <li>security-example 이라고 된 remember-key값은 원하는 값으로 변경해도 두 곳 모두 되지만 동일하게 유지해야한다.</li>
+  <li><code class="highlighter-rouge">setParameter()</code>의 값은 view 페이지에서 로그인 상태여부를 체크하는 파라미터의  <code class="highlighter-rouge">name</code> 이다.</li>
+</ul>
+
+<p>다음은 <code class="highlighter-rouge">PersistentTokenRepositoryImpl</code>를 구현해보겠다.</p>
+
+<pre><code class="language-Java">@Repository
+@Transactional
+public class PersistentTokenRepositoryImpl implements PersistentTokenRepository {
+
+    @Autowired
+    TokenRepository tokenRepository;
+
+    @Override
+    public void createNewToken(PersistentRememberMeToken token) {
+        Token newToken = new Token();
+        newToken.setUsername(token.getUsername());
+        newToken.setSeries(token.getSeries());
+        newToken.setToken(token.getTokenValue());
+        newToken.setLastUsed(token.getDate());
+        tokenRepository.save(newToken);
+    }
+
+    @Override
+    public void updateToken(String series, String tokenValue, Date lastUsed) {
+        Token token = tokenRepository.findOne(series);
+        token.setToken(tokenValue);
+        token.setLastUsed(lastUsed);
+        tokenRepository.save(token);
+    }
+
+    @Override
+    public PersistentRememberMeToken getTokenForSeries(String seriesId) {
+        System.out.println("seriesId : " + seriesId);
+        Token token = tokenRepository.findOne(seriesId);
+
+        PersistentRememberMeToken persistentRememberMeToken =
+                new PersistentRememberMeToken(token.getUsername(), seriesId, token.getToken(), token.getLastUsed());
+        return persistentRememberMeToken;
+    }
+
+    @Override
+    public void removeUserTokens(String username) {
+        tokenRepository.deleteByUsername(username);
+    }
+}
+</code></pre>
+
+<p><code class="highlighter-rouge">PersistentTokenRepository</code> 를 직접 구현해줬다.</p>
+
+<p><code class="highlighter-rouge">TokenRepository</code>는 아래와 같다.</p>
+<pre><code class="language-Java">@Repository
+public interface TokenRepository extends JpaRepository&lt;Token, String&gt;{
+
+    int deleteByUsername(String username);
+}
+</code></pre>
+
+<p><code class="highlighter-rouge">Token</code>의 객체를 정의한다.</p>
+<pre><code class="language-Java">@Getter
+@Setter
+@Entity
+@Table(name="remember_me_token", catalog = "toy_db")
+public class Token {
+
+    @Column(name = "username")
+    private String username;
+    @Id
+    @Column(name = "series")
+    private String series;
+    @Column(name = "token")
+    private String token;
+    @Column(name = "last_used")
+    private Date lastUsed;
+
+}
+</code></pre>
+
+<p>이렇게 해주면 구현된다.
+이 구조는 조금은 커스텀된 형태로 구현을 한것인데 더 간단히 사용하기 위해서는 <code class="highlighter-rouge">JdbcTokenRepositoryImpl</code>를 사용해도 된다.</p>
+
+<pre><code class="language-Java">@Autowired
+DataSource dataSource; //추가한다.
+
+@Bean
+public PersistentTokenRepository jdbcTokenRepository() {
+	JdbcTokenRepositoryImpl repository = new JdbcTokenRepositoryImpl();
+	repository.setCreateTableOnStartup(false);
+	repository.setDataSource(dataSource);			
+	return repository;
+}
+</code></pre>
+
+<p><code class="highlighter-rouge">PersistentTokenRepositoryImpl</code> 대신 <code class="highlighter-rouge">JdbcTokenRepositoryImpl</code> 를 구현해주고 dataSource를 설정해주면 별도의</p>
+
+<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">`persistent_logins`</span> <span class="p">(</span>
+  <span class="nv">`username`</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`series`</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`token`</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`last_used`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="nv">`series`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">latin1</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>tokenRepository를 구현하지 않아도 <code class="highlighter-rouge">persistent_logins</code> 테이블에 token정보가 저장된다.</p>
+
+<h2 id="section-1">마치며</h2>
+<p>로그인을 구현하는데 있어서 쉽게 구현할 수 있었다. 로그인을 구현한다는것은 여간 까다롭고 귀찮은 일이 아니다. spring-security가 알아서 편리하게 해주니 좋다. 이것을 기초로 응용해 더 안전한 로그인 기능을 구현할 수 있겟다.</p>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/backup_memory/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a href="//www.facebook.com/sharer.php?t=%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0%28Springboot+Security%29+%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0&u=http%3A%2F%2Fsunkyungch.github.io%2Fbackup_memory%2Fjava%2F2018%2F04%2F18%2Fspring-security.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook-square fa-lg"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+      <a href="//www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fsunkyungch.github.io%2Fbackup_memory%2Fjava%2F2018%2F04%2F18%2Fspring-security.html"
+        onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+        <i class="fa fa-linkedin-square fa-lg"></i>
+      </a>
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a href="//plus.google.com/share?title=%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0%28Springboot+Security%29+%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0&url=http%3A%2F%2Fsunkyungch.github.io%2Fbackup_memory%2Fjava%2F2018%2F04%2F18%2Fspring-security.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus-square fa-lg"></i>
+      </a>
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+      <a href="//www.pinterest.com/pin/create/button/?description=%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0%28Springboot+Security%29+%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0&url=http%3A%2F%2Fsunkyungch.github.io%2Fbackup_memory%2Fjava%2F2018%2F04%2F18%2Fspring-security.html&media=http://sunkyungch.github.io/backup_memory/assets/dev.jpeg"
+        onclick="window.open(this.href, 'pinterest-share', 'width=550,height=255');return false;">
+        <i class="fa fa-pinterest-square fa-lg"></i>
+      </a>
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+      <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('http://sunkyungch.github.io/backup_memory/java/2018/04/18/spring-security.html') + '&title=스프링부트-시큐리티(Springboot Security) 적용하기'; return false">
+        <i class="fa fa-reddit-square fa-lg"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">보조기억장치</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/backup_memory/about/">About</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/backup_memory/posts/">Posts</a>
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:sunkyungch@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">sunkyungch@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/SunKyungCho" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">sunkyungcho</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://www.linkedin.com/in/sun-kyung-cho-133818151/" title="Connect with me on LinkedIn">
+              <i class="fa fa-linkedin"></i>
+              <span class="username">Sunkyung Cho</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/backup_memory/feed.xml">via RSS</a></strong></p>
+      <p class="text">개발관련 보조기억장치
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>
